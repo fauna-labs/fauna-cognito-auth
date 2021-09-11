@@ -34,28 +34,28 @@ function ConfirmSignup() {
                 console.log('Error', err)
             }
             console.log('Call Result', result);
+            alert('User Confirmed')
         })
     }
 
     return (
-        <div >
-          <h2>User Confirmation</h2>
-          <form onSubmit={onSubmit}>
-            <div>
-              <label>Email: </label>
-              <input onChange={updateInput} name="username" value={state.username}/>
-            </div>
-            <div>
-              <label>Code: </label>
-              <input onChange={updateInput} name="confirmCode"  value={state.confirmCode}/>
-            </div>
-            <div>
-              <input type="submit"/>
-            </div>
-          </form>
-        </div>
+      <div >
+        <h2>User Confirmation</h2>
+        <form onSubmit={onSubmit}>
+          <div>
+            <label>Email: </label>
+            <input onChange={updateInput} name="username" value={state.username}/>
+          </div>
+          <div>
+            <label>Code: </label>
+            <input onChange={updateInput} name="confirmCode"  value={state.confirmCode}/>
+          </div>
+          <div>
+            <input type="submit"/>
+          </div>
+        </form>
+      </div>
     );
-    
 }
 
 export default ConfirmSignup;

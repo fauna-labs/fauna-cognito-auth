@@ -22,22 +22,23 @@ function SignUp() {
     }
     
     const onSubmit = async e => {
-        e.preventDefault();
-        console.log('State', state);
-        const attributeList = [
-          new CognitoUserAttribute({
-            Name: 'email',
-            Value: state.username,
-          })
-        ];
-        userPool.signUp( state.username, state.password, attributeList, null, (err, result) => {
-          if (err) {
-            console.log(err);
-            return;
-          }
-          console.log('user name is ', result.user.getUsername());
-          console.log('call result: ', result);
-        });
+      e.preventDefault();
+      console.log('State', state);
+      const attributeList = [
+        new CognitoUserAttribute({
+          Name: 'email',
+          Value: state.username,
+        })
+      ];
+      userPool.signUp( state.username, state.password, attributeList, null, (err, result) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log('user name is ', result.user.getUsername())
+        console.log('call result: ', result)
+        alert('User Signed Up')
+      });
     }
 
     return (
