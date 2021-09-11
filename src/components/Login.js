@@ -42,6 +42,7 @@ function Login() {
                 setCookie('fauna_access_token', data.getIdToken().payload.fauna_access_token)
                 setCookie('cognito_refresh', data.getRefreshToken().getToken())
                 setCookie('cognito_username', data.getAccessToken().payload.username)
+                alert('User Login Successful');
             },
 
             onFailure: err => {
