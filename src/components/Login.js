@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import { config } from '../config';
 
 function Login() {
-    const [cookies, setCookie] = useCookies(['fauna_access_token']);
+    const [cookies, setCookie] = useCookies([]);
     const [state, setState] = useState({
         username: '',
         password: '',
@@ -41,6 +41,7 @@ function Login() {
             onSuccess: data => {
                 setCookie('fauna_access_token', data.getIdToken().payload.fauna_access_token)
                 setCookie('cognito_refresh', data.getRefreshToken().getToken())
+                setCookie('cognito_username', data.getAccessToken().payload.username)
             },
 
             onFailure: err => {
