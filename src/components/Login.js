@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { CognitoUserPool, CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
+import { useCookies } from 'react-cookie';
 import { config } from '../config';
 
 function Login() {
+    const [cookies, setCookie] = useCookies(['fauna_access_token']);
     const [state, setState] = useState({
         username: '',
         password: '',
@@ -37,7 +39,8 @@ function Login() {
 
         cognitoUser.authenticateUser(authenticationDetails, {
             onSuccess: data => {
-                console.log('Success', data)
+                setCookie('fauna_access_token', data.getIdToken().payload.fauna_access_token)
+                setCookie('cognito_refresh', data.getRefreshToken().getToken())
             },
 
             onFailure: err => {

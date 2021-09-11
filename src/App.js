@@ -7,10 +7,9 @@ import {
 import SignUp from './components/SignUp';
 import ConfirmSignup from './components/Confirm';
 import Login from './components/Login';
+import Movies from './components/Movies';
 
 function App() {
-
-
   return (
     <Router>
       <div>
@@ -26,10 +25,11 @@ function App() {
               <Link to="/confirm">Confirm Signup</Link>
             </li>
             <li>
-              <Link to="/resources">Dashboard</Link>
+              <Link to="/movies">Movies</Link>
             </li>
           </ul>
         </nav>
+        <hr />
         <Switch>
           <Route path="/signup">
             <SignUp />
@@ -40,8 +40,8 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/resources">
-            <div>Dash Board</div>
+          <Route path="/movies">
+            <Movies />
           </Route>
         </Switch>
       </div>
