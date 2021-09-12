@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { CognitoUserPool, CognitoUserAttribute } from 'amazon-cognito-identity-js';
+import { useHistory } from 'react-router-dom';
 import { config } from '../config';
 
 function SignUp() {
+    let history = useHistory();
     const [state, setState] = useState({
         username: '',
         password: '',
@@ -37,7 +39,8 @@ function SignUp() {
         }
         console.log('user name is ', result.user.getUsername())
         console.log('call result: ', result)
-        alert('User Signed Up')
+        alert('User Registration Complete');
+        history.push('/confirm')
       });
     }
 

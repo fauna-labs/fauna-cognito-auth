@@ -46,7 +46,7 @@ function Movies() {
             console.log('error', error);
             if(error.name === "Unauthorized") {
               // Refresh Tokens
-              refreshTokens();
+              alert('Token Expired! Refresh Token or Log in again')
             }
         }
     }

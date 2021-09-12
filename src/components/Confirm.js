@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { CognitoUserPool, CognitoUser } from 'amazon-cognito-identity-js';
+import { useHistory } from 'react-router-dom';
 import { config } from '../config';
 
 function ConfirmSignup() {
+    let history = useHistory();
     const [state, setState] = useState({
         username: '',
         confirmCode: '',
@@ -34,7 +36,8 @@ function ConfirmSignup() {
                 console.log('Error', err)
             }
             console.log('Call Result', result);
-            alert('User Confirmed')
+            alert('User Confirmed. Please Login')
+            history.push('/login')
         })
     }
 

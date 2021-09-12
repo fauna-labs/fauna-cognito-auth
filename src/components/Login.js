@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { CognitoUserPool, CognitoUser, AuthenticationDetails } from 'amazon-cognito-identity-js';
 import { useCookies } from 'react-cookie';
+import { useHistory } from 'react-router-dom';
 import { config } from '../config';
 
 function Login() {
+    let history = useHistory();
     const [cookies, setCookie] = useCookies([]);
     const [state, setState] = useState({
       username: '',
@@ -42,7 +44,9 @@ function Login() {
           setCookie('fauna_access_token', data.getIdToken().payload.fauna_access_token)
           setCookie('cognito_refresh', data.getRefreshToken().getToken())
           setCookie('cognito_username', data.getAccessToken().payload.username)
+          console.log('Auth Data', data);
           alert('User Login Successful');
+          history.push('/movies');
         },
 
         onFailure: err => {
